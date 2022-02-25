@@ -15,8 +15,7 @@ componentDidMount(){
 fetchedData(){
   fetch(URL)
   .then(res => res.json())
-  .then(
-    (result) => {
+  .then((result) => {
       this.setState({
         cocktails: result
     });
@@ -25,14 +24,18 @@ fetchedData(){
 };
 
 
-
 render(){
   const{cocktails} = this.state;
     return(
-      <ul class="el">
-        {cocktails.map(cocktail => (
-          <div key={cocktail}>
-            <div class="box">{cocktail.name} | {cocktail.ingredients}</div>
+      <ul className="el">
+        {cocktails.map((cocktail, i) => (
+          <div key={i}>
+            <div className="box">
+              <li style={{listStyle:'none'}}>
+                <span>{cocktail.name}</span> | {" "}
+                <span>{cocktail.ingredients}</span>
+              </li>
+            </div>
           </div>))}
         </ul>
   )};
